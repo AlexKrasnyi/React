@@ -1,5 +1,6 @@
 .todo-list-item {
     font-size: 1.25rem;
+    justify-content: 'space-between'
 }
 
 .todo-list-item button {
@@ -12,6 +13,7 @@
     line-height: 35px;
     cursor: pointer;
     user-select: none;
+    
 }
 
 .todo-list-item.done .todo-list-item-label {
