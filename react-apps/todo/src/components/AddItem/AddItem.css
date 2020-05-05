@@ -1,4 +1,9 @@
 .add-item {
    margin: 0 auto;
-    margin-top: 15px;
+   margin-top: 15px;
+}
+
+.add-item input {
+    margin-right: 3px;
+    
 }

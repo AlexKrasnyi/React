@@ -1,14 +1,28 @@
-import React from 'react'
-import ItemStatusFilter from '../ItemStatusFilter'
+import React, {Component} from 'react'
 import './SearchField.css'
 
-const SearchField = () => {
-    return(
-        <div className="row search-div">
-        <input className="search-field col-md-7" placeholder="search" />
-        <ItemStatusFilter />
-        </div>
-    )
-}
+export default class SearchField extends Component {
 
-export default SearchField
+    state = {
+        term:''
+    }
+
+    onSendLabel = (e) => {
+        const term = e.target.value
+        this.setState({term})
+        this.props.onSendLabel(term)
+    }
+
+    
+
+    render() {
+        return(
+            <input 
+                className="search-field" 
+                placeholder="search" 
+                onChange={this.onSendLabel}
+                value={this.state.term}
+            />
+        )
+    }
+}
