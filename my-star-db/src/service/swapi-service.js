@@ -37,7 +37,7 @@ export default class SwapiServise  {
   }
   
   _transformId(item) {
-    const idRegExp = /\/([0-9]*)\/$/
+    const idRegExp = /\/([\-A-Za-z0-9]*)\/$/
     console.log(item.url.match(idRegExp)[1])
     return item.url.match(idRegExp)[1]
   }
