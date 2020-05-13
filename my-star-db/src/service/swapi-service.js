@@ -8,41 +8,56 @@ export default class SwapiServise  {
      }
   
   
-  async getAllPeople() {
-    const res = await this.getResourse('https://swapi.dev/api/people')
+  getAllPeople = async () => {
+    const res = await this.getResourse('https://swapi.dev/api/people?size=3')
     return await res.results.map(this._transformPeope)
   }
   
-  async getPerson(id) {
+  getPerson = async (id) => {
     const people = await this.getResourse(`https://swapi.dev/api/people/${id}`)
     return this._transformPeope(people)
   }
   
-  async getAllStarShips() {
+  getAllStarShips = async () => {
     const res = await this.getResourse('https://swapi.dev/api/starships')
+    console.log(res.results.map(this._transformStarship))
     return await res.results.map(this._transformStarship)
   }
-  async getStarShip(id) {
+
+  getStarShip = async (id) => {
     const starship = await this.getResourse(`https://swapi.dev/api/starships/${id}`)
     return this._transformStarship(starship)
   }
   
-  async getAllPlanets() {
+  getAllPlanets = async () => {
    const res = await this.getResourse('https://swapi.dev/api/planets')
-  return await res.results.map(this._transformPlanet)
+  console.log(await res.results.map(this._transformPlanet))
+   return await res.results.map(this._transformPlanet)
   }
-  async getPlanet(id){
+
+  getPlanet = async (id) => {
     const planet = await this.getResourse(`https://swapi.dev/api/planets/${id}`)
     return  this._transformPlanet(planet)
   }
-  
+
+  getImagePerson = ({id}) => {
+    return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`
+  }
+
+  getImageStarship = ({id}) => {
+    return `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`
+  }
+
+  getImagePlanet = ({id}) => {
+    return `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`
+  }
+
   _transformId(item) {
-    const idRegExp = /\/([\-A-Za-z0-9]*)\/$/
-    console.log(item.url.match(idRegExp)[1])
+    const idRegExp = /\/([0-9]*)\/$/
     return item.url.match(idRegExp)[1]
   }
 
-  _transformStarship(starship) {
+  _transformStarship = (starship) => {
 
     return {
       id: this._transformId(starship),
@@ -53,7 +68,7 @@ export default class SwapiServise  {
     }
   }
 
-  _transformPeope(people) {
+  _transformPeope = (people) => {
 
     return {
       id: this._transformId(people),
@@ -63,7 +78,8 @@ export default class SwapiServise  {
       eyeColor: people.eye_color
     }
   }
-  _transformPlanet(planet) {
+
+  _transformPlanet = (planet) => {
 
     return {
       id: this._transformId(planet),

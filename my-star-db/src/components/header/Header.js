@@ -4,14 +4,14 @@ import './Header.css'
 const Header = () => {
 
     return (
-        <div className="d-flex">
+        <div className="d-flex header">
             <h3>
-                <a href="#">
+                <a href="//#regiono">
                     Star DB
                 </a>
             </h3>
 
-            <ul>
+            <ul className="d-flex">
                 <li>
                     <a href="//#region ">People</a>
                 </li>
