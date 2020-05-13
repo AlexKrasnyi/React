@@ -3,57 +3,28 @@ import Loader from '../loader'
 import './ListItems.css'
 import SwapiService from '../../service/swapi-service'
 
-class ListItems extends Component {
+const ListItems = (props) => {
 
-    
-    // state = {
-    //     allItems: null
-    // }
-
-    // componentDidMount() {
-
-    //     const {getData} = this.props
-        
-    //     getData().then((allItems) => {
-    //         this.setState({allItems})
-    //     })
-    // }
-
-     renderPeople (arr){
-         
-        return  arr.map((item) => {
-            const {id} = item
-            
-            const label = this.props.renderItem(item)
+        const { data, onItemSelected, renderItem } = props
+        const peoples = data.map((item) => {
+            const {id} = item 
+            const label =renderItem(item)
             return (
                 <li className="list-group-item"
                 key={id}
-                onClick={() => this.props.onItemSelected(id)}>
+                onClick={() => onItemSelected(id)}>
                     {label}
                 </li>
-            )
-        })
-    }
-
-    render() {
-
-        // const {allItems} = this.state
-
-        // if(!allItems) {
-        //     return (
-        //         <Loader />
-        //     )
-        // }
-        const { data } = this.props
-        const peoples = this.renderPeople(data)
+                )
+            })
         
         return (
             <ul className="list-items list-group">
                 {peoples}
             </ul>
-        )
+            )
     }
-}
+// }
 
 const withData = (Wiev) => {
     return class extends Component {
