@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import Loader from '../loader'
-import ListItems from '../list-items'
-import SwapiService from '../../service/swapi-service'
+
 
 const WithData = (Wiev, getData) => {
     return class extends Component {
@@ -31,7 +30,6 @@ const WithData = (Wiev, getData) => {
     }
 }
 
-// const {getAllPeople} = new SwapiService()
 
 export default WithData
  

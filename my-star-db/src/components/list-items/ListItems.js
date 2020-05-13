@@ -29,35 +29,6 @@ const ListItems = (props) => {
     }
 
 
-// const withData = (Wiev, getData) => {
-//     return class extends Component {
-         
-//     state = {
-//         data: null
-//     }
-
-//     componentDidMount() {
-
-//         // const {getData} = this.props
-        
-//         getData().then((data) => {
-//             this.setState({data})
-//         })
-//     }
-        
-//     render() {
-
-//         const {data} = this.state
-
-//         if(!data) {
-//             return (
-//                 <Loader />
-//             )
-//         }
-//         return <Wiev {...this.props} data={data} />
-//     }
-//     }
-// }
  
 const {getAllPeople} = new SwapiService()
 
