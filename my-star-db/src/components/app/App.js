@@ -9,6 +9,7 @@ import ErrorMessage from '../error-message'
 import SwapiService from '../../service/swapi-service'
 import RowElement from '../row-element'
 import ItemDetails, {Record} from '../person-details/ItemDetails'
+import WithData from '../hoc-helper'
 
 
 export default class App extends Component {
@@ -64,9 +65,11 @@ export default class App extends Component {
 
             <div className="row mb2">
                 <div className="list-items col-md-6">
+                    
                     <ListItems onItemSelected={this.onPersonSelected}
                     getData={this.swapiService.getAllPlanets} 
                     renderItem={(item) => item.name} />
+                    
                 </div>
                 <div className="col-md-6">
                     {/* {peopleDetail} */}

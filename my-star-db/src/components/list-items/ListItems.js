@@ -2,10 +2,13 @@ import React, {Component} from 'react'
 import Loader from '../loader'
 import './ListItems.css'
 import SwapiService from '../../service/swapi-service'
+import WithData from '../hoc-helper'
+
 
 const ListItems = (props) => {
 
         const { data, onItemSelected, renderItem } = props
+        console.log(data)
         const peoples = data.map((item) => {
             const {id} = item 
             const label =renderItem(item)
@@ -24,37 +27,39 @@ const ListItems = (props) => {
             </ul>
             )
     }
-// }
 
-const withData = (Wiev) => {
-    return class extends Component {
+
+// const withData = (Wiev, getData) => {
+//     return class extends Component {
          
-    state = {
-        data: null
-    }
+//     state = {
+//         data: null
+//     }
 
-    componentDidMount() {
+//     componentDidMount() {
 
-        const {getData} = this.props
+//         // const {getData} = this.props
         
-        getData().then((data) => {
-            this.setState({data})
-        })
-    }
+//         getData().then((data) => {
+//             this.setState({data})
+//         })
+//     }
         
-    render() {
+//     render() {
 
-        const {data} = this.state
+//         const {data} = this.state
 
-        if(!data) {
-            return (
-                <Loader />
-            )
-        }
-        return <Wiev {...this.props} data={data} />
-    }
-    }
-}
+//         if(!data) {
+//             return (
+//                 <Loader />
+//             )
+//         }
+//         return <Wiev {...this.props} data={data} />
+//     }
+//     }
+// }
+ 
+const {getAllPeople} = new SwapiService()
 
-export default withData(ListItems)
+export default WithData(ListItems, getAllPeople)
 
