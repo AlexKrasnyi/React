@@ -1,4 +1,4 @@
-export default class SwapiServise  {
+export default class SwapiService  {
     async getResourse(url) {
        const res = await fetch(url)
         if(!res.ok) {

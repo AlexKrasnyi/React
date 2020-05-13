@@ -8,12 +8,12 @@ const swapiService = new SwapiService()
 
 const { getAllPeople, getAllPlanets, getAllStarShips} = swapiService
 
-const withChildFunc = (Wrapper, func) => {
+const withChildFunc = (Wrapped, func) => {
     return (props) => {
         return (
-            <Wrapper {...props}>
+            <Wrapped {...props}>
                 {func}
-            </Wrapper>
+            </Wrapped>
         )
         }
     

@@ -1,5 +1,7 @@
 import { PeopleList, PlanetList, StarshipList } from './ItemLists'
-import { PersonDetail, PlanetDetail, StarshipDetail } from './PersonLists'
+import  PersonDetail from './PersonDetail'
+import  PlanetDetail from './PlanetDetail'
+import  StarshipDetail from './StarshipDetail'
 
 export { PeopleList, 
     PlanetList, 
