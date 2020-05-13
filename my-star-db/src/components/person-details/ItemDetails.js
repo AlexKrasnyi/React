@@ -72,15 +72,15 @@ const Record = ({item, field, label}) => {
     </li> 
     )
 }
-
 export {Record}
+
 
 const ItemData = ({item, image, children}) => {
 
-    const { id, name}= item
+    const { name }= item
     return(
         <React.Fragment>
-                          <img className="person-image" src={image} alt="chracters"></img>  
+                          <img className="person-image" src={ image } alt="chracters"></img>  
                 <div className="card-body">
                     <h4>{name}</h4>
                     <ul className="list-group list-group-flush">
