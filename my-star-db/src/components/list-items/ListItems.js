@@ -7,7 +7,7 @@ const ListItems = (props) => {
         console.log(data)
         const peoples = data.map((item) => {
             const {id} = item 
-            const label =renderItem(item)
+            const label = renderItem(item)
             return (
                 <li className="list-group-item"
                 key={id}

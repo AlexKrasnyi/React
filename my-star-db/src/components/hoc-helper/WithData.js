@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Loader from '../loader'
 
 
-const WithData = (Wiev, getData) => {
+const WithData = (Wiev) => {
     return class extends Component {
          
     state = {
@@ -11,7 +11,7 @@ const WithData = (Wiev, getData) => {
 
     componentDidMount() {
         
-        getData().then((data) => {
+        this.props.getData().then((data) => {
             this.setState({data})
         })
     }
