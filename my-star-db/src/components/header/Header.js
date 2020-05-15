@@ -1,7 +1,7 @@
 import React from 'react'
 import './Header.css'
 
-const Header = () => {
+const Header = ({onChangeApi}) => {
 
     return (
         <div className="d-flex header">
@@ -22,6 +22,11 @@ const Header = () => {
                     <a href="//#region ">Starsips</a>
                 </li>
             </ul>
+
+            <button 
+            className="btn btn-primary btn-sm"
+            onClick={onChangeApi}
+            >Change API</button>
 
         </div>
     )

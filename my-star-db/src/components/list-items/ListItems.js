@@ -4,7 +4,6 @@ import './ListItems.css'
 const ListItems = (props) => {
 
         const { data, onItemSelected, children:renderItem } = props
-        console.log(data)
         const peoples = data.map((item) => {
             const {id} = item 
             const label = renderItem(item)

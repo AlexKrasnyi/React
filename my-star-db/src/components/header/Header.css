@@ -13,3 +13,8 @@
 .header ul li:hover {
     background-color: #444;
 }
+
+.header button {
+    margin-bottom: 5px;
+    height: 2.5rem;
+}

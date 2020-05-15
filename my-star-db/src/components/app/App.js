@@ -18,14 +18,22 @@ import { PeopleList,
 
 export default class App extends Component {
 
-    swapiService = new DummiSwapiService()
-
     state={
-       hasError: false
+       hasError: false,
+       swapiService: new SwapiService()
     }
 
     componentDidCatch() {
         this.setState({ hasError:true })
+    }
+
+    onChangeApi = () => {
+        this.setState(({swapiService}) => {
+            const Service = swapiService instanceof SwapiService ? DummiSwapiService : SwapiService
+            return {
+                    swapiService: new Service
+                }
+            })
     }
 
    render(){
@@ -38,8 +46,8 @@ export default class App extends Component {
     return (
         <div>
             <ErrorBoundary>
-                <SwapiServiceProvider value={ this.swapiService }>
-                    <Header />
+                <SwapiServiceProvider value={ this.state.swapiService }>
+                    <Header onChangeApi={this.onChangeApi} />
                     <RandomPlanet />
                     <RowElement 
                     left={

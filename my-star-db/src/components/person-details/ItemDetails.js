@@ -18,7 +18,9 @@ export default class ItemDetails extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(this.props.itemId !== prevProps.itemId){
+        if(this.props.itemId !== prevProps.itemId ||
+            this.props.getItem !== prevProps.getItem ||
+            this.props.getImageUrl!== prevProps.getImageUrl){
             this.updateItem()
         }
     }
@@ -64,7 +66,6 @@ export default class ItemDetails extends Component {
 }
 
 const Record = ({item, field, label}) => {
-    console.log(item)
     return (
         <li className="list-group-item">
         <span className="term">{label}</span>

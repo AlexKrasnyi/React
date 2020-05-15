@@ -31,7 +31,6 @@ export default class SwapiService  {
   
   getAllPlanets = async () => {
    const res = await this.getResourse('https://swapi.dev/api/planets')
-  console.log(await res.results.map(this._transformPlanet))
    return await res.results.map(this._transformPlanet)
   }
 
