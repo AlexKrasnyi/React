@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import ListItems from '../list-items'
 import WithData, {WithSwapiService} from '../hoc-helper'
 // import SwapiService from '../../service/swapi-service'

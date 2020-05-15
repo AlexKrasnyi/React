@@ -6,6 +6,7 @@ import ErrorMessage from '../error-message'
 import RowElement from '../row-element'
 import ErrorBoundary from '../error-boundary'
 import SwapiService from '../../service/swapi-service'
+import DummiSwapiService from '../../service/dummi-swapi-service'
 import { SwapiServiceProvider } from '../swapi-context'
 import { PeopleList, 
     PlanetList, 
@@ -17,7 +18,7 @@ import { PeopleList,
 
 export default class App extends Component {
 
-    swapiService = new SwapiService()
+    swapiService = new DummiSwapiService()
 
     state={
        hasError: false
