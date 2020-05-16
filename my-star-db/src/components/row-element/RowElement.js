@@ -1,4 +1,5 @@
 import React from 'react'
+import PropType from 'prop-types'
 
 const RowElement = ({left, right}) => {
     return (
@@ -11,6 +12,11 @@ const RowElement = ({left, right}) => {
                 </div>
             </div>
     )
+}
+
+RowElement.propType = {
+    left: PropType.node, 
+    right: PropType.node
 }
 
 export default RowElement

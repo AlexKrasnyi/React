@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import ItemDetails, {Record} from '../person-details'
+import React from 'react'
+import ItemDetails, {Record} from '../item-details/index'
 import { WithSwapiService } from '../hoc-helper'
 
     const PersonDetail = (props) => {

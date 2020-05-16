@@ -1,11 +1,31 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import Loader from '../loader'
 import ErrorMessage from '../error-message'
-import './RandomPlanet.css'
 import SwapiServise from '../../service/swapi-service'
+import './RandomPlanet.css'
+
 
 export default class RandomPlanet extends Component {
      swapiServis = new SwapiServise()
+
+    static defaultProps = {
+        renevalTime: 10000
+    } 
+
+    // static propTypes = {
+    //     renevalTime: (props, propsName, componentName) => {
+    //         const value = props[propsName]
+    //         if(typeof value === 'number' && !isNaN(value)) {
+    //             return null
+    //         }
+
+    //         return  new TypeError(`${componentName}: ${propsName} must be a number`)
+    //     }
+    // }
+    static propTypes = {
+            renevalTime: PropTypes.number
+        } 
 
     state ={
         planet: {},
@@ -13,7 +33,9 @@ export default class RandomPlanet extends Component {
     }
 
     componentDidMount() {
-        this.interval = setInterval(this.updatePlanet, 4000)
+        const {renevalTime} = this.props
+        this.updatePlanet()
+        this.interval = setInterval(this.updatePlanet, renevalTime)
         // clearInterval(this.interval)
     }
 

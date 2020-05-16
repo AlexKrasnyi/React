@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import ItemDetails, {Record} from '../person-details'
+import React from 'react'
+import ItemDetails, {Record} from '../item-details'
 import { SwapiServiceConsumer } from '../swapi-context'
 
 const StarshipDetail = ({itemId}) => {
