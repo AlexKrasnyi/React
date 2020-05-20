@@ -2,7 +2,7 @@ import React, {useState, Component, useEffect} from 'react'
 import ReactDom from 'react-dom'
 
 const App = () => {
-    const [ value, setValue ] = useState(1)
+    const [ value, setValue ] = useState(0)
     const [ visible, setVisible ] = useState(true)
     
     if(visible){
@@ -10,7 +10,9 @@ const App = () => {
         <div>
             <button onClick={() => setValue((v) => v + 1) }>+</button>
             <button onClick={() => setVisible(false)}>Hide</button>
-            <PlanetName value={value}/>
+            {/* <ClassCounter value={value}/> */}
+            {/* <HookCounter value={value}/> */}
+            <Notification />
         </div>
     )
     }
@@ -31,32 +33,6 @@ const HookCounter = ({value}) => {
 return <p>{value}</p>
 }
 
-const usePlanetName = ({value}) => {
-    const [name, setName] = useState(null)
-    useEffect(() => {
-        let canselled = false
-        fetch(`https://swapi.dev/api/planets/${value}`)
-    .then((r) => r.json()).then((data) => !canselled && setName(data.name))
-    return () => canselled = true
-    }, [value])
-    return name
-}
-
-const PlanetName = ({value}) => {
-    const name = usePlanetName({value})
-    // const [name, setName] = useState(null)
-    // useEffect(() => {
-    //     let canselled = false
-    //     fetch(`https://swapi.dev/api/planets/${value}`)
-    // .then((r) => r.json()).then((data) => !canselled && setName(data.name))
-    // return () => canselled = true
-    // }, [value])
-    
-    return (
-    <p>{value} - Planet Name : {name}</p>
-    )
-}
-
 
 const Notification = () => {
     const [vis, setVis] = useState(true)
@@ -72,6 +48,21 @@ return (
     </div>
 )
 }
+// class ClassCounter extends Component {
 
+//     componentDidMount() {
+//         console.log('class: mount')
+//     }
+//     componentDidUpdate() {
+//         console.log('class: Update')
+//     }
+//     componentWillUpdate() {
+//         console.log('class: Unmount')
+//     }
+
+//     render() {
+//         return <p>{this.props.value}</p>
+//     }
+// }
 
 ReactDom.render(<App />, document.getElementById('root'))
