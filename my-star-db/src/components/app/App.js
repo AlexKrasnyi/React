@@ -8,6 +8,7 @@ import SwapiService from '../../service/swapi-service'
 import DummiSwapiService from '../../service/dummi-swapi-service'
 import { SwapiServiceProvider } from '../swapi-context'
 import { PeoplePage, PlanetPage, StarshipPage } from '../item-pages'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 export default class App extends Component {
 
@@ -40,11 +41,13 @@ export default class App extends Component {
         <div>
             <ErrorBoundary>
                 <SwapiServiceProvider value={ this.state.swapiService }>
-                    <Header onChangeApi={this.onChangeApi} />
+                    <Router>
+                    <Header onChangeApi={ this.onChangeApi } />
                     <RandomPlanet  />
-                    <PeoplePage />
-                    <PlanetPage />
-                    <StarshipPage />
+                    <Route path="/people" component={ PeoplePage } />
+                    <Route path="/planet" component={ PlanetPage } />
+                    <Route path="/Starship" component={ StarshipPage } />
+                    </Router>
                 </SwapiServiceProvider>
             </ErrorBoundary>
 
