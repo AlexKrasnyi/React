@@ -44,9 +44,17 @@ export default class App extends Component {
                     <Router>
                     <Header onChangeApi={ this.onChangeApi } />
                     <RandomPlanet  />
+
+                    <Route path="/" 
+                    render={ () => <h3>Welcome to Star DB</h3> } 
+                    exact />
+                    <Route path="/people" 
+                    render={ () => <h5>People</h5> } 
+                    exact />
+
                     <Route path="/people" component={ PeoplePage } />
-                    <Route path="/planet" component={ PlanetPage } />
-                    <Route path="/Starship" component={ StarshipPage } />
+                    <Route path="/planets" component={ PlanetPage } />
+                    <Route path="/starships" component={ StarshipPage } />
                     </Router>
                 </SwapiServiceProvider>
             </ErrorBoundary>

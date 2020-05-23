@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Header.css'
 
 const Header = ({onChangeApi}) => {
@@ -6,20 +7,18 @@ const Header = ({onChangeApi}) => {
     return (
         <div className="d-flex header">
             <h3>
-                <a href="//#regiono">
-                    Star DB
-                </a>
+                <Link to="/">Star DB</Link>
             </h3>
 
             <ul className="d-flex">
                 <li>
-                    <a href="//#region ">People</a>
+                    <Link to="/people">People</Link>
                 </li>
                 <li>
-                    <a href="//#region ">Planets</a>
+                    <Link to="/planets">Planets</Link>
                 </li>
                 <li>
-                    <a href="//#region ">Starsips</a>
+                    <Link to="/starships">Starsips</Link>
                 </li>
             </ul>
 
