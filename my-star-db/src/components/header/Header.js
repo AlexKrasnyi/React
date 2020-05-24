@@ -20,6 +20,12 @@ const Header = ({onChangeApi}) => {
                 <li>
                     <Link to="/starships/">Starsips</Link>
                 </li>
+                <li>
+                    <Link to="/secret">Secret Page</Link>
+                </li>
+                <li>
+                    <Link to="/login">Login</Link>
+                </li>
             </ul>
 
             <button 
