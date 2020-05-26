@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Loader from '../loader'
 import ErrorIndicator from '../error-indicator'
 import { withBookstoreService } from '../hoc';
-import { booksLoaded, booksUpdated, booksError } from '../../actions';
+import { fetchBooks } from '../../actions';
 import BookListItem from '../book-list-item.js';
 import './BookList.css';
 
@@ -60,17 +60,9 @@ const mapStateToProps = (state) => {
 // const mapDispatchToProps = (dispatch) => {
 // 	return bindActionCreators({ booksLoaded }, dispatch)
 // };
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, { bookstoreService }) => {
 	return {
-		fetchBooks: () => {
-
-		const { bookstoreService } = ownProps;
-
-		dispatch(booksUpdated())
-		bookstoreService.getBooks()
-		.then((data) => {dispatch(booksLoaded(data))})
-		.catch((e) => dispatch(booksError(e)));
-		}
+		fetchBooks: fetchBooks(dispatch, bookstoreService)
 	};
 };
 
