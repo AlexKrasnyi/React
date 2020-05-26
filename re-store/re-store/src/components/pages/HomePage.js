@@ -1,10 +1,14 @@
-import React from 'react'
-import BookList from '../book-list.js'
+import React from 'react';
+import BookList from '../book-list.js';
+import ShopingCartTable from '../shoping-cart-table'
 
 const HomePage = () => {
   return (
-    <BookList />
-  )
-}
+    <div>
+      <BookList />
+      <ShopingCartTable />
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
