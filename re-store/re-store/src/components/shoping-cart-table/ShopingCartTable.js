@@ -5,11 +5,11 @@ import './ShopingCartTable.css';
 const ShopingCartTable = ({ items, total, onDec, onInc, onDelete }) =>{
 
   const renderRow = (items, index) => {
-    const { id, name, count, total } = items
+    const { id, title, count, total } = items
     return(
       <tr key={id}>
     <td>{index + 1}</td>
-    <td>{ name }</td>
+    <td>{ title }</td>
     <td>{ count }</td>
     <td>{ total }</td>
     <td>
@@ -59,6 +59,7 @@ const ShopingCartTable = ({ items, total, onDec, onInc, onDelete }) =>{
 };
 
 const mapStateToProps = (state) => {
+  console.log('st', state.cartItems)
   return {
     items: state.cartItems,
     total: state.cartTotal
@@ -67,9 +68,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = () => {
   return {
-    onDec: () => console.log('decrease'),
-    onInc: () => console.log('increment'),
-    onDelete: () => console.log('delete')
+    onDec: (id) => console.log(`decrease ${id}`),
+    onInc: (id) => console.log(`increment ${id}`),
+    onDelete: (id) => console.log(`delete ${id}`)
   }
 }
 
