@@ -8,42 +8,57 @@ const initialState = {
 };
 
 const updateCartItems = (cartItems, item, idx) => {
-  if(idx === -1) {
+  if(item.count === 0){
     return [
-        ...cartItems,
-        item
-    ];
-  } else {
-    return [
-        ...cartItems.slice(0, idx),
-        item,
-        ...cartItems.slice( idx +1),
+      ...cartItems.slice(0, idx),
+      ...cartItems.slice(idx +1),
     ];
   };
+
+  if(idx === -1) {
+    return [
+      ...cartItems,
+      item
+    ];
+  };
+
+  return [
+    ...cartItems.slice(0, idx),
+    item,
+    ...cartItems.slice( idx +1),
+  ];
+};
+
+const updateCartItem = (book, item={}, quantity) => {
+  const {
+    id =  book.id,
+    title = book.title,
+    count = 0,
+    total = 0 } = item
+    
+  return {
+    id,
+    title,
+    count: count + quantity,
+    total: total + quantity * book.price
+  }    
 }
 
-const updateCartItem = (book, item) => {
-  
-    if(item){
- 
-        return {
-          ...item,
-          count: item.count + 1,
-          total: item.total + book.price
-        }
-    } else {
+const uploadBooks = (state, bookId, quantity) => {
+  const {books, cartItems} = state;
+      const book = books.find((book) => book.id === bookId);
+      const itemIdx = cartItems.findIndex(({id}) => bookId === id)
+      const item = cartItems[itemIdx]
+      const newItem = updateCartItem(book, item, quantity)
       return {
-        id: book.id,
-        title: book.title,
-        count: 1,
-        total: book.price
+        ...state,
+        cartItems: updateCartItems(cartItems, newItem, itemIdx)
       }
 }
-}
+
 
 const reducer = ( state = initialState, action ) => {
 
-  console.log(action.type)
   switch(action.type) {
     case 'FETCH_BOOKS_REQUEST' :
       return {
@@ -71,17 +86,7 @@ const reducer = ( state = initialState, action ) => {
     };
 
     case 'BOOK_ADDED' :
-      const id = action.payload;
-      console.log('id', id)
-      const book = state.books.find((book) => book.id === id);
-      const itemIdx = state.cartItems.findIndex(({id}) => id === book.id)
-      console.log(itemIdx)
-      const item = state.cartItems[itemIdx]
-      const newItem = updateCartItem(book, item)
-      return {
-        ...state,
-        cartItems: updateCartItems(state.cartItems, item, itemIdx)
-      }
+      return uploadBooks(state, action.payload, 1)
     //   let newItem
     //   if(!item){
     //     newItem = {
@@ -117,6 +122,14 @@ const reducer = ( state = initialState, action ) => {
     //   };
     // };
       
+    case 'BOOK_REMOVE_FROM_CARD': 
+      return uploadBooks(state, action.payload, -1);
+    
+
+    case 'ALL_BOOK_REMOVE_FROM_CARD': 
+    const item = state.cartItems.find((book) => book.id === action.payload);
+    return uploadBooks(state, action.payload, -item.count);
+     
 
     default: 
       return state           
