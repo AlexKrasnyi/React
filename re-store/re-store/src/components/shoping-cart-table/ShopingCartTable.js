@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import './ShopingCartTable.css';
 import { bookAdded, bookRemoveFromCart, allBookRemoveFromCart } from '../../actions';
 
@@ -31,7 +31,7 @@ const ShopingCartTable = ({ items, total, onDec, onInc, onDelete }) =>{
     </button>
   </td>
   </tr>
-    )
+    );
   };
   return (
     <div className="shoping-cart-table">
@@ -63,7 +63,7 @@ const mapStateToProps = (state) => {
   return {
     items: state.initialCart.cartItems,
     total: state.initialCart.cartTotal
-  }
+  };
 };
 
 // const mapDispatchToProps = (dispatch) => {
@@ -76,7 +76,7 @@ const mapDispatchToProps = {
   onInc: bookAdded,
   onDec: bookRemoveFromCart,
   onDelete: allBookRemoveFromCart
-}
+};
 
 
 export default connect( mapStateToProps, mapDispatchToProps )(ShopingCartTable);

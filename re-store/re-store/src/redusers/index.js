@@ -1,5 +1,5 @@
-import updateInitialCart from './InitialCart'
-import updateInitialBooks from './InitialBooks'
+import updateInitialCart from './InitialCart';
+import updateInitialBooks from './InitialBooks';
 
 const reducer = ( state, action ) => {
   return {
@@ -8,4 +8,4 @@ const reducer = ( state, action ) => {
   };    
 };
 
-export default reducer
+export default reducer;

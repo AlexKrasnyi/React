@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux'
-import Loader from '../loader'
-import ErrorIndicator from '../error-indicator'
+import Loader from '../loader';
+import ErrorIndicator from '../error-indicator';
 import { withBookstoreService } from '../hoc';
 import { fetchBooks, bookAdded } from '../../actions';
 import BookListItem from '../book-list-item.js';
@@ -20,8 +20,7 @@ const BookList = ({ books, onAddedBook}) => {
 			} ) }
 		</ul>
 	);
-}
-
+};
 
 class BookListComponent extends Component {
 
@@ -48,7 +47,7 @@ class BookListComponent extends Component {
 
 		if(error) {
 			return <ErrorIndicator />
-		}
+		};
 
 		return <BookList books={books} onAddedBook={onAddedBook}/>
 	};
