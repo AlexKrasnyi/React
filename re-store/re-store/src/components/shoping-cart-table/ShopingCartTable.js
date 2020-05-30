@@ -15,11 +15,6 @@ const ShopingCartTable = ({ items, total, onDec, onInc, onDelete }) =>{
     <td>{ total }</td>
     <td>
     <button 
-      onClick={ () => onDelete(id) }
-      className="btn btn-outline-danger btn-sm">
-        <i className="fa fa-trash-o"></i>
-    </button>
-    <button 
       onClick={ () => onInc(id) }
       className="btn btn-outline-success btn-sm">
         <i className="fa fa-plus-circle"></i>
@@ -28,6 +23,11 @@ const ShopingCartTable = ({ items, total, onDec, onInc, onDelete }) =>{
       onClick={ () => onDec(id) }
       className="btn btn-outline-warning btn-sm">
         <i className="fa fa-minus-circle"></i>
+    </button>
+    <button 
+      onClick={ () => onDelete(id) }
+      className="btn btn-outline-danger btn-sm">
+        <i className="fa fa-trash-o"></i>
     </button>
   </td>
   </tr>
@@ -67,12 +67,17 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return  {
-    onDec:(id) => dispatch(bookRemoveFromCart(id)),
-    onInc: (id) => dispatch(bookAdded(id)),
-    onDelete: (id) => dispatch(allBookRemoveFromCart(id))}
-  }
+// const mapDispatchToProps = (dispatch) => {
+//   return  {
+//     onDec:(id) => dispatch(bookRemoveFromCart(id)),
+//     onInc: (id) => dispatch(bookAdded(id)),
+//     onDelete: (id) => dispatch(allBookRemoveFromCart(id))}
+//   }
+const mapDispatchToProps = {
+  onInc: bookAdded,
+  onDec: bookRemoveFromCart,
+  onDelete: allBookRemoveFromCart
+}
 
 
 export default connect( mapStateToProps, mapDispatchToProps )(ShopingCartTable);
